@@ -1,0 +1,65 @@
+class Solution {
+     
+    public String longestDiverseString(int a, int b, int c) {
+         String dString="";
+        int counta=0,countb=0,countc=0;
+        
+        
+        int N=a+b+c;
+        
+        for(int i=0;i<N;i++){
+            
+            if(a>=b && a>=c && a>1 && counta<2){
+                dString+="aa";
+                a-=2;
+                counta=2;
+                countb=0;
+                countc=0;
+            }
+            else if(b>=c && b>=a && b>1 && countb<2){
+                dString+="bb";
+                b-=2;
+                countb=2;
+                counta=0;
+                countc=0;
+            }
+            else if(c>=b && c>=a && c>1 && countc<2){
+                dString+="cc";
+                c-=2;
+                countc=2;
+                countb=0;
+                counta=0;
+            }    
+            
+            else if(a>0 && counta<2){
+                dString+="a";
+                a--;
+                counta++;
+                countb=0;
+                countc=0;
+                
+            }
+            
+            else if(b>0 && countb<2){
+                dString+="b";
+                b--;
+                countb++;
+                counta=0;
+                countc=0;
+            }
+            
+            else if(c>0 && countc<2){
+                dString+="c";
+                c--;
+                countc++;
+                counta=0;
+                countb=0;
+            }
+            
+        }
+        
+        
+        return dString;
+    }
+    
+}
